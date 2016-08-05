@@ -1,1 +1,5 @@
-# Coding-Tasks
+Coding-Tasks
+============
+
+Solutions to various coding tasks
+
