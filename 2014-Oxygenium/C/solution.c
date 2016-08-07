@@ -20,11 +20,11 @@ int less_equal(int a, int b)
 
 int add_element( VP vp, VP* arr, int begin, int end, cmp_ft cmp )
 {
-	while( (end >= begin) && cmp(arr[end].val, vp.val) ) {
+	while( (end > begin) && cmp(arr[end-1].val, vp.val) ) {
 		end--;
 	}
-	end++;
 	arr[end] = vp;
+	end++;
 	return end;
 }
 
@@ -36,8 +36,8 @@ int solution( int K, int A[], int N )
 	VP* mini = malloc(N * sizeof(VP));
 	VP* maxi = malloc(N * sizeof(VP));
 
-	int mini_begin = 0, mini_end = -1;
-	int maxi_begin = 0, maxi_end = -1;
+	int mini_begin = 0, mini_end = 0;
+	int maxi_begin = 0, maxi_end = 0;
 	VP vp;
 
 	for( i = 0; i < N; ++i ) {
