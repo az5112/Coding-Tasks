@@ -8,12 +8,12 @@ class Solution {
         }
     }
 
-    abstract class Cmp {
-        abstract boolean compare (Comparable a, Comparable b);
+    interface Cmp {
+        boolean compare (Comparable a, Comparable b);
     }
 
-    class GreaterEqual extends Cmp {
-        boolean compare( Comparable a, Comparable b) {
+    class GreaterEqual implements Cmp {
+        public boolean compare( Comparable a, Comparable b) {
             int r = a.compareTo(b);
             if( (r == 1) || (r == 0) ) return true;
             return false;
@@ -21,7 +21,7 @@ class Solution {
     }
 
     class LessEqual extends Cmp {
-        boolean compare( Comparable a, Comparable b) {
+        public boolean compare( Comparable a, Comparable b) {
             int r = a.compareTo(b);
             if( (r == 0) || (r == -1) ) return true;
             return false;
