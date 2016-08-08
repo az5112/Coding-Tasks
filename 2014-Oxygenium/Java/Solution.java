@@ -20,7 +20,7 @@ class Solution {
         };
     }
 
-    class LessEqual extends Cmp {
+    class LessEqual implements Cmp {
         public boolean compare( Comparable a, Comparable b) {
             int r = a.compareTo(b);
             if( (r == 0) || (r == -1) ) return true;
