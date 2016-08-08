@@ -46,8 +46,8 @@ class Solution {
 
         Mem[] mini = new Mem[N+1];
         Mem[] maxi = new Mem[N+1];
-        int mini_begin = 0, mini_end = -1;
-        int maxi_begin = 0, maxi_end = -1;
+        int mini_first = 0, mini_last = -1;
+        int maxi_first = 0, maxi_last = -1;
         int j = 0;
         int result = 0;
         GreaterEqual ge = new GreaterEqual();
@@ -55,10 +55,10 @@ class Solution {
 
         for( int i = 0; i < N; ++i ) {
             while( j < N ) {
-                mini_end = add_elem(ge, new Mem(A[j], j), mini, mini_begin, mini_end );
-                maxi_end = add_elem(lt, new Mem(A[j], j), maxi, maxi_begin, maxi_end );
+                mini_last = add_elem(ge, new Mem(A[j], j), mini, mini_first, mini_last );
+                maxi_last = add_elem(lt, new Mem(A[j], j), maxi, maxi_first, maxi_last );
 
-                if( (maxi[maxi_begin].value - mini[mini_begin].value) <= K ) {
+                if( (maxi[maxi_first].value - mini[mini_first].value) <= K ) {
                     j += 1;
                 }
                 else {
@@ -68,8 +68,8 @@ class Solution {
 
             result += (j - i);
             if(result >= max_int) return max_int;
-            if(mini[mini_begin].posA == i) mini_begin += 1;
-            if(maxi[maxi_begin].posA == i) maxi_begin += 1;
+            if(mini[mini_first].posA == i) mini_first += 1;
+            if(maxi[maxi_first].posA == i) maxi_first += 1;
         }
 
         return result;
