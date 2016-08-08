@@ -30,7 +30,7 @@ class Solution {
 
     public < T extends Cmp > int add_elem(T cmp, Mem a, Mem mem[], int begin, int end)
     {
-        while( (end >= begin) && cmp.compare( mem[end].value, a.value) ) {
+        while( (end >= begin) && cmp.compare(a.value, mem[end].value) ) {
             end -= 1;
         }
 
@@ -51,12 +51,12 @@ class Solution {
         int j = 0;
         int result = 0;
         GreaterEqual ge = new GreaterEqual();
-        LessEqual lt = new LessEqual();
+        LessEqual le = new LessEqual();
 
         for( int i = 0; i < N; ++i ) {
             while( j < N ) {
-                mini_last = add_elem(ge, new Mem(A[j], j), mini, mini_first, mini_last );
-                maxi_last = add_elem(lt, new Mem(A[j], j), maxi, maxi_first, maxi_last );
+                mini_last = add_elem(le, new Mem(A[j], j), mini, mini_first, mini_last );
+                maxi_last = add_elem(ge, new Mem(A[j], j), maxi, maxi_first, maxi_last );
 
                 if( (maxi[maxi_first].value - mini[mini_first].value) <= K ) {
                     j += 1;
